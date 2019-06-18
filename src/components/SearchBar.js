@@ -2,11 +2,14 @@ import React from 'react'
 
 class SearchBar extends React.Component{ // WAJIB RETURN SATU BUAH DIV
 
+    state={
+        keyword: ""
+    }
     onSubmitForm = (event) => { //event adalah object yang diinput oleh React secara otomatis
         // console.log(event)
         event.preventDefault()  //.preventDefault() adalah method yang dibuat oleh React secara otomatis UNTUK  MENGHALANGI UNTUK WINDOW REFRESH
 
-        this.props.imageFn(event.target.value)
+        this.props.imageFn(this.state.keyword)
 
     }
 
@@ -21,7 +24,9 @@ class SearchBar extends React.Component{ // WAJIB RETURN SATU BUAH DIV
                 <form onSubmit={this.onSubmitForm} className="form-group mt-5">
                     <input type="text" className="form-control" placeholder="Type Here"
                      
-                    onChange= {this.onSubmitForm}/>
+                    onChange= {(event)=>{
+                        this.setState({keyword:event.target.value}
+                        )}}/>
                 </form>
             </div>
         )

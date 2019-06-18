@@ -2,19 +2,26 @@ import React from 'react'
 
 class ImageList extends React.Component{ // WAJIB RETURN SATU BUAH DIV
     
-    showImages(imageUrl){
-        return(
-                <img src={imageUrl} alt="Unplash"/>
-        )
+    showImages(){
+            var hasil = this.props.hasilImages.map((item)=>{
+                return(
+                    <div className="d-flex justify-content-center">
+                        <img src={item.urls.regular}
+                        style={{maxWidth:'700px'}} alt='Unsplash' className='m-2'/>
+                    </div>
+                )
+            })
+
+        return hasil
     }
     
     render(){
         return( 
-            <div>
-                {this.props.hasilImages.map(imageUrl => this.showImages(imageUrl))}
-            </div>
-        )
+                <div>
+                    {this.showImages()}
+                </div>
+            )
         }
-}
+    }
 
 export default ImageList;
